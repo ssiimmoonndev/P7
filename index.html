@@ -1,14 +1,28 @@
 <html lang="fr">
 <head>
-  <link rel="stylesheet" href="src/output.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <title>Les Petits Plats</title>
 </head>
 
-<main>
-  <body>
-    
-  </body>
-</main>
+<body>
+  <header>
+    <img class="absolute top-10 left-10" src="assets/icons/Logo.png" alt="Logo Les Petits Plats">
+    <div class="bg-header bg-cover bg-center h-100 flex items-center justify-center">
+      <div class="text-center text-white">
+        <p class="text-yellow text-xl font-bold">
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>
+          DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+        </p>
+        <input type="text" placeholder="Rechercher une recette, un ingrédient, ..." name="search-bar" id="search-bar">
+      </div>
+    </div>
+  </header>
+</body>
+
+<script src="utils/sort-by.js"></script>
+<script src="utils/cards.js"></script>
+<script src="index.js"></script>
+</html>

@@ -1,0 +1,11 @@
+.bg-header {
+  background-image: url('../assets/icons/Mask_group.png');
+}
+
+.logo-png {
+  background-image: url('../assets/icons/Logo.png');
+}
+
+.logo-color {
+  text-decoration-color: rgb(241, 211, 111);
+}
