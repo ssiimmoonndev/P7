@@ -29,7 +29,7 @@
       </div>
     </div>
   </header>
-  <main class="bg-gray-300">
+  <main class="bg-[color:var(--bg-color)]">
     <div class="flex flex-row items-center justify-between">
       <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-5">
         <select class="pt-2 pr-5 pb-2 pl-2" name="Ingredients" id="Ingredients">
@@ -44,23 +44,11 @@
       </div>
       <p class="text-xl font-bold mr-10">1500 recettes</p>
     </div>
-    <div class="cards w-full flex flex-wrap gap-20">
-      <div class="relative bg-white w-[30%] max-h-100px shadow-2xl">
-        <img class="w-full h-full max-h-80 object-cover" src="./assets/images/Recette01.jpg" alt="">
-        <span class="absolute bg-[color:var(--primary-color)] top-10 right-10 text-black font-bold rounded-xl p-1">10min</span>
-        <!-- <p class="p-5">test</p> -->
-         <div class="text-black text-xl font-bold">Titre de la recette</div>
-         <div class="text-gray-500 flex flex-col">recette
-          <div class="text-black">Mettre les glaçons à votre goût dans le blender,<br>
-            ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre.<br>
-            Mixer jusqu'à avoir la consistence désirée.</div>
-         </div>
-      </div>
-    </div>
+    <div class="cards flex flex-wrap gap-10 justify-center"></div>
   </main>
 </body>
 
-<script src="recipes.js"></script>
+<script src="data/recipes.js"></script>
 <script src="utils/cards.js"></script>
 <script src="utils/sort-by.js"></script>
 <script src="index.js"></script>

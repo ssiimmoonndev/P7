@@ -1,8 +1,11 @@
+
 function cardTemplate(data) {
+  console.log(data);
+  
 
   const {id, image, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
-  const piture = `./assets/images/${image}`;
+  const picture = `./assets/images/${image}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -28,16 +31,16 @@ function cardTemplate(data) {
     title.textContent = name;
 
     // Recette
-    const recetteSection = document.createElement("div");
-    recetteSection.className = "mb-4";
+    const recipeSection = document.createElement("div");
+    recipeSection.className = "mb-4";
 
-    const recetteLabel = document.createElement("p");
-    recetteLabel.className = "text-gray-500 font-bold mb-2 text-sm uppercase";
-    recetteLabel.textContent = "RECETTE";
+    const recipeLabel = document.createElement("p");
+    recipeLabel.className = "text-gray-500 font-bold mb-2 text-sm uppercase";
+    recipeLabel.textContent = "RECETTE";
 
-    const recetteDescription = document.createElement("p");
-    recetteDescription.className = "text-black text-sm";
-    recetteDescription.textContent = description;
+    const recipeDescription = document.createElement("p");
+    recipeDescription.className = "text-black text-sm";
+    recipeDescription.textContent = description;
 
     // Ingredients
     const ingredientsSection = document.createElement("div");
@@ -47,14 +50,35 @@ function cardTemplate(data) {
     ingredientsLabel.className = "text-gray-500 font-bold mb-2 text-sm uppercase";
     ingredientsLabel.textContent = "INGRÉDIENTS";
 
+    const ingredientsGrid = document.createElement("div");
+    ingredientsGrid.className = "grid grid-cols-2 gap-2 text-sm";
+
+    // Parcourt chaque élément du tableau (ingredients) et stocke chaque élément dans (ingredient)
+    ingredients.forEach(ingredient => {
+      const ingredientList = document.createElement("div");
+      ingredientList.className = "text-black";
+
+      const ingredientName = document.createElement("p");
+      ingredientName.className = "font-bold"
+      ingredientName.textContent = ingredient.ingredient; // Je veux un seul objet du tableau
+      
+      const ingredientQuantity = document.createElement("p");
+      ingredientQuantity.className = "text-gray-500";
+      ingredientQuantity.textContent = ingredient.quantity + " " + ingredient.unit;
+
+      ingredientList.appendChild(ingredientName);
+      ingredientList.appendChild(ingredientQuantity);
+      ingredientsGrid.appendChild(ingredientList);
+    });
+
     imageContainer.appendChild(img);
     imageContainer.appendChild(timeSpan);
-    recetteSection.appendChild(recetteLabel);
-    recetteSection.appendChild(recetteDescription);
+    recipeSection.appendChild(recipeLabel);
+    recipeSection.appendChild(recipeDescription);
     ingredientsSection.appendChild(ingredientsLabel);
-
+    ingredientsSection.appendChild(ingredientsGrid);
     contentContainer.appendChild(title);
-    contentContainer.appendChild(recetteSection);
+    contentContainer.appendChild(recipeSection);
     contentContainer.appendChild(ingredientsSection);
     article.appendChild(imageContainer);
     article.appendChild(contentContainer);
@@ -63,3 +87,5 @@ function cardTemplate(data) {
   }
   return { getUserCardDOM };
 }
+
+
