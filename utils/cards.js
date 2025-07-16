@@ -63,12 +63,8 @@ function cardTemplate(data) {
       ingredientName.textContent = ingredient.ingredient; // Je veux un seul objet du tableau
       
       const ingredientQuantity = document.createElement("p");
-      const textQuantity = `${ingredient.quantity !== undefined ? ingredient.quantity : ""} ${ingredient.unit !== undefined ? ingredient.unit : ""}` 
-      console.log(textQuantity);
-      
       ingredientQuantity.className = "text-gray-500";
-      ingredientQuantity.textContent = textQuantity;
-      
+      ingredientQuantity.textContent = ((ingredient.quantity || '') + ' ' + (ingredient.unit || '')).trim();
 
       ingredientList.appendChild(ingredientName);
       ingredientList.appendChild(ingredientQuantity);
