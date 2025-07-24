@@ -32,15 +32,17 @@
   <main class="bg-[color:var(--bg-color)]">
     <div class="flex flex-row items-center justify-between">
       <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-5">
-        <select class="pt-2 pr-5 pb-2 pl-2" name="Ingredients" id="Ingredients">
+        <select class="pt-2 pr-5 pb-2 pl-2" name="ingredients" id="ingredients-filter">
           <option value="">Ingrédients</option>
         </select>
-        <select class="pt-2 pr-5 pb-2 pl-2" name="Ingredients" id="Ingredients">
+        <select class="pt-2 pr-5 pb-2 pl-2" name="appareils" id="appareils-filter">
           <option value="">Appareils</option>
         </select>
-        <select class="pt-2 pr-5 pb-2 pl-2" name="Ingredients" id="Ingredients">
+        <select class="pt-2 pr-5 pb-2 pl-2" name="ustensils" id="ustensils-filter">
           <option value="">Ustensils</option>
         </select>
+      </div>
+      <div class="recipes-section">
       </div>
       <p class="text-xl font-bold mr-10">1500 recettes</p>
     </div>
@@ -51,5 +53,6 @@
 <script src="data/recipes.js"></script>
 <script src="templates/cards.js"></script>
 <script src="utils/filters.js"></script>
+<script src="algorithms/search.js"></script>
 <script src="index.js"></script>
 </html>

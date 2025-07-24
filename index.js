@@ -12,7 +12,7 @@ function displayRecipe(data) {
   });
 }
 
-cardTemplate("simon");
+cardTemplate("");
 
 // Fonction init
 function initRecipeCards() {
@@ -25,3 +25,6 @@ function initRecipeCards() {
 }
 
 initRecipeCards();
+
+// Initialisez les filtres lorsque la page est prête
+initFilters(recipes);
