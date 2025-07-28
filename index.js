@@ -12,7 +12,7 @@ function displayRecipe(data) {
   });
 }
 
-cardTemplate("simon");
+cardTemplate("");
 
 // Fonction init
 function initRecipeCards() {
