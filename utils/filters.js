@@ -4,8 +4,8 @@
 
 function contient(texte, mot) {
   const texteEnMinuscules = texte.toLowerCase();
-  const termeEnMinuscules = mot.toLowerCase();
-  return texteEnMinuscules.includes(termeEnMinuscules);
+  const motEnMinuscules = mot.toLowerCase();
+  return texteEnMinuscules.includes(motEnMinuscules);
 }
 
 function searchRecipes(mot, recipes) {
