@@ -27,17 +27,9 @@ function searchRecipes(mot, recipes) {
       // Pour chaque ingrédient, je vérifie s'il contient le mot
       return contient(item.ingredient, mot);
     });
-
-    // Étape 4 : je vérifie les ustensiles avec some()
-    const ustensilCorrespond = recipe.ustensils.some(function(ustensil) {
-      return contient(ustensil, mot);
-    });
-    
-    // Étape 5 : je vérifie l'appareil
-    const applianceCorrespond = contient(recipe.appliance, mot);
     
     // Retourn true si une des 3 conditions est vraie
-    return nomCorrespond || descriptionCorrespond || ingredientCorrespond || ustensilCorrespond || applianceCorrespond;
+    return nomCorrespond || descriptionCorrespond || ingredientCorrespond;
   });
   
   return recettesCorrespondantes;
