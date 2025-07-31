@@ -15,24 +15,22 @@ function searchRecipes(mot, recipes) {
   // Nouveau tableau vide pour les recherches correspondantes
   const recettesCorrespondantes = [];
   
-  // Première boucle - parcourir chaque recette
+  // Chaque recette
   for (let i = 0; i < recipes.length; i++) {
     const recipe = recipes[i];
     let recetteTrouvee = false;
     
-    // Étape 4 : Deuxième niveau pour vérifier chaque champ manuellement
-    
-    // Vérifie le titre
+    // Titre
     if (contient(recipe.name, motNormalise)) {
       recetteTrouvee = true;
     }
-    
-    // Vérifie la description
+
+    // Description
     if (!recetteTrouvee && contient(recipe.description, motNormalise)) {
       recetteTrouvee = true;
     }
     
-    // Vérifie les ingrédients (boucle for séparée)
+    // Ingrédients (boucle for séparée)
     if (!recetteTrouvee) {
       for (let j = 0; j < recipe.ingredients.length; j++) {
         if (contient(recipe.ingredients[j].ingredient, motNormalise)) {
