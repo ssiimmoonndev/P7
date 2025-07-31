@@ -5,18 +5,17 @@ function contient(texte, mot) {
 }
 
 function searchRecipes(mot, recipes) {
-  // Vérifie si il y a les 3 caractères
   if (mot.length < 3) {
-    return []; // "Aucun résultat"
+    return [];
   }
   
-  // Étape 2 : Normaliser le texte en minuscules pour le rendre insensible à la casse
+  // Normalise le texte en minuscules pour le rendre insensible à la casse
   const motNormalise = mot.toLowerCase();
   
-  // Tableau vide pour les recherches qui correspondent
+  // Nouveau tableau vide pour les recherches correspondantes
   const recettesCorrespondantes = [];
   
-  // Étape 3 : Première boucle - parcourir chaque recette
+  // Première boucle - parcourir chaque recette
   for (let i = 0; i < recipes.length; i++) {
     const recipe = recipes[i];
     let recetteTrouvee = false;
@@ -43,7 +42,6 @@ function searchRecipes(mot, recipes) {
       }
     }
     
-    // Si correspondance trouvée, ajouter à la liste
     if (recetteTrouvee) {
       recettesCorrespondantes.push(recipe);
     }
