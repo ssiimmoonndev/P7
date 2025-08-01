@@ -1,6 +1,7 @@
 
 function displayRecipe(data) {
   const cardsContainer = document.querySelector('.cards');
+  cardsContainer.innerHTML = ''; 
   // Parcourt chaque élément du tableau (recipes) et stocke chaque élément dans (recipe)
   data.forEach(recipe => {
     // Création carte - cardTemplate contient la data des recettes
@@ -12,7 +13,7 @@ function displayRecipe(data) {
   });
 }
 
-cardTemplate("");
+// cardTemplate("");
 
 // Fonction init
 function initRecipeCards() {
@@ -25,3 +26,20 @@ function initRecipeCards() {
 }
 
 initRecipeCards();
+
+
+
+// 1. Sélectionner la barre de recherche
+const searchBar = document.getElementById('search-bar');
+
+// 2. Ajouter un écouteur d'événement sur la barre de recherche
+searchBar.addEventListener('input', (e) => {
+  // Récupérer le texte tapé par l'utilisateur
+  const searchTerm = e.target.value;
+
+  // 3. Filtrer les recettes en utilisant votre fonction
+  const filteredRecipes = searchRecipes(searchTerm, recipes);
+
+  // 4. Afficher les nouvelles recettes filtrées (votre fonction displayRecipe s'occupe de l'affichage)
+  displayRecipe(filteredRecipes);
+});
