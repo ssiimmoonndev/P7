@@ -27,8 +27,6 @@ function initRecipeCards() {
 
 initRecipeCards();
 
-
-
 // 1. Sélectionner la barre de recherche
 const searchBar = document.getElementById('search-bar');
 

@@ -28,12 +28,11 @@ function searchRecipes(mot, recipes) {
       return contient(item.ingredient, mot);
     });
 
-     // --- AJOUT POUR LE DÉBOGAGE ---
     // Cette ligne va nous montrer dans la console si une recette correspond ou non.
     if (nomCorrespond || descriptionCorrespond || ingredientCorrespond) {
       console.log(`TROUVÉ '${mot}' dans la recette :`, recipe.name);
     }
-    // --- FIN DE L'AJOUT ---
+   
     
     // Retourn true si une des 3 conditions est vraie
     return nomCorrespond || descriptionCorrespond || ingredientCorrespond;
