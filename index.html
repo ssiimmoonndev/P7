@@ -32,7 +32,28 @@
   <main class="bg-[color:var(--bg-color)]">
     <div class="flex flex-row items-center justify-between">
       <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-5">
-        <div class="filter-grid flex" id="filterGrid">
+        <div class="dropdown-container">
+          <button class="dropdown-btn">Ingrédients ▼</button>
+          <div class="dropdown-content hidden">
+            <input type="text" class="dropdown-search" placeholder="Rechercher...">
+            <ul class="dropdown-list"></ul>
+          </div>
+        </div>
+        <div class="dropdown-container">
+          <button class="dropdown-btn">Appareils ▼</button>
+          <div class="dropdown-content hidden">
+            <input type="text" class="dropdown-search" placeholder="Rechercher...">
+            <ul class="dropdown-list"></ul>
+          </div>
+        </div>
+        <div class="dropdown-container">
+          <button class="dropdown-btn">Ustensiles ▼</button>
+          <div class="dropdown-content hidden">
+            <input type="text" class="dropdown-search" placeholder="Rechercher...">
+            <ul class="dropdown-list"></ul>
+          </div>
+        </div>
+        <!-- <div class="filter-grid flex" id="filterGrid">
           <div class="ingredient-card flex gap-2 pr-5" id="ingredientCard">
             <h3 class="ingredient-title font-semibold">Ingredients</h3>
             <button class="expand-btns">
@@ -40,18 +61,18 @@
             </button>
           </div>
           <div class="ingredient-card flex gap-2 pr-5" id="ingredientCard">
-            <h3 class="ingredient-title font-semibold">Ingredients</h3>
+            <h3 class="ingredient-title font-semibold">Appareils</h3>
             <button class="expand-btns">
               <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
             </button>
           </div>
           <div class="ingredient-card flex gap-2" id="ingredientCard">
-            <h3 class="ingredient-title font-semibold">Ingredients</h3>
+            <h3 class="ingredient-title font-semibold">Ustensiles</h3>
             <button class="expand-btns">
               <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
             </button>
           </div>
-        </div>
+        </div> -->
         <!-- <select class="pt-2 pr-5 pb-2 pl-2" name="ingredients" id="filter-ingredients">
           <option value="">Ingrédients</option>
         </select>
