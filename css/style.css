@@ -2,3 +2,27 @@
   --primary-color: rgb(241, 211, 111);
   --bg-color: rgb(229, 229, 229);
 }
+
+/* 1. Le conteneur parent devient le point de référence.
+  Il ne bouge pas, mais sert d' "ancre" pour son enfant 
+  qui sera en position absolue. */
+
+.dropdown-container {
+  position: relative; /* C'est la modification la plus importante ! */
+}
+
+/*
+  2. La liste déroulante est sortie du flux normal du document.
+  Elle va maintenant "flotter" par-dessus les autres éléments.
+*/
+.dropdown-content {
+  position: absolute; /* Fait en sorte que l'élément flotte par-dessus. */
+  z-index: 10; /* Assure qu'il est bien AU-DESSUS des autres contenus (comme les cartes). */
+  
+  /* Optionnel mais recommandé : un peu de style pour que ça soit joli */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  width: 220px; /* Donnez-lui une largeur fixe pour un meilleur rendu */
+  margin-top: 8px; /* Un petit espace entre le bouton et la liste */
+}
