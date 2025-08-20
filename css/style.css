@@ -18,11 +18,25 @@
 .dropdown-content {
   position: absolute; /* Fait en sorte que l'élément flotte par-dessus. */
   z-index: 10; /* Assure qu'il est bien AU-DESSUS des autres contenus (comme les cartes). */
-  
-  /* Optionnel mais recommandé : un peu de style pour que ça soit joli */
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  width: 220px; /* Donnez-lui une largeur fixe pour un meilleur rendu */
-  margin-top: 8px; /* Un petit espace entre le bouton et la liste */
-}
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  margin-top: -2px; /* Ajustez pour coller la liste au bouton */
+  padding-top: 5px;
+  border: 1px solid #ccc; /* Optionnel : pour mieux voir les limites */
+  border-top: none;
+  width: 100%;
+  }
+
+  .dropdown-btn img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-btn.open img {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-search {
+    width: 100%;
+  }

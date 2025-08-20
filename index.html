@@ -31,68 +31,45 @@
   </header>
   <main class="bg-[color:var(--bg-color)]">
     <div class="flex flex-row items-center justify-between">
-      <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-5">
+      <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-10">
         <div class="dropdown-container">
           <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Ingrédients
             <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
           </button>
-          <div class="dropdown-content hidden">
-            <input type="text" class="dropdown-search" placeholder="Rechercher...">
-            <ul class="dropdown-list"></ul>
+          <div class="dropdown-content hidden rounded">
+            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
+            <div class="flex absolute right-3 top-3">
+              <img src="assets/icons/Group 4.svg" alt="">
+            </div>
+            <ul class="dropdown-list flex flex-col gap-1"></ul>
           </div>
         </div>
         <div class="dropdown-container">
           <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Appareils
             <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
           </button>
-          <div class="dropdown-content hidden">
-            <input type="text" class="dropdown-search" placeholder="Rechercher...">
-            <ul class="dropdown-list"></ul>
+          <div class="dropdown-content hidden rounded">
+            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
+            <div class="flex absolute right-3 top-3">
+              <img src="assets/icons/Group 4.svg" alt="">
+            </div>
+            <ul class="dropdown-list  flex flex-col gap-1"></ul>
           </div>
         </div>
         <div class="dropdown-container">
           <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Ustensiles
             <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
           </button>
-          <div class="dropdown-content hidden">
-            <input type="text" class="dropdown-search" placeholder="Rechercher...">
-            <ul class="dropdown-list"></ul>
+          <div class="dropdown-content hidden rounded">
+            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
+            <div class="flex absolute right-3 top-3">
+              <img src="assets/icons/Group 4.svg" alt="">
+            </div>
+            <ul class="dropdown-list  flex flex-col gap-1"></ul>
           </div>
         </div>
-        <!-- <div class="filter-grid flex" id="filterGrid">
-          <div class="ingredient-card flex gap-2 pr-5" id="ingredientCard">
-            <h3 class="ingredient-title font-semibold">Ingredients</h3>
-            <button class="expand-btns">
-              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
-            </button>
-          </div>
-          <div class="ingredient-card flex gap-2 pr-5" id="ingredientCard">
-            <h3 class="ingredient-title font-semibold">Appareils</h3>
-            <button class="expand-btns">
-              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
-            </button>
-          </div>
-          <div class="ingredient-card flex gap-2" id="ingredientCard">
-            <h3 class="ingredient-title font-semibold">Ustensiles</h3>
-            <button class="expand-btns">
-              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
-            </button>
-          </div>
-        </div> -->
-        <!-- <select class="pt-2 pr-5 pb-2 pl-2" name="ingredients" id="filter-ingredients">
-          <option value="">Ingrédients</option>
-        </select>
-        <select class="pt-2 pr-5 pb-2 pl-2" name="appliances" id="filter-appliances">
-          <option value="">Appareils</option>
-        </select>
-        <select class="pt-2 pr-5 pb-2 pl-2" name="ustensils" id="filter-ustensils">
-          <option value="">Ustensiles</option>
-        </select> -->
       </div>
       <p class="text-xl font-bold mr-10">1500 recettes</p>
-    </div>
-    <div id="tags-container" class="flex flex-row flex-wrap ml-5 mb-5 gap-4">
-      <!-- Les tags sélectionnés apparaîtront ici -->
     </div>
     <div class="cards flex flex-wrap gap-10 justify-center"></div>
   </main>
