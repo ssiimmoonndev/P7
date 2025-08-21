@@ -44,65 +44,70 @@
   </header>
 
   <main class="bg-background px-10 py-5">
-    <div class="flex flex-row items-center justify-between">
-      
-      <!-- SECTION DES FILTRES (DROPDOWNS) -->
-      <div class="sort-container flex flex-row gap-x-10 my-5">
+    <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between">
+        
+        <!-- SECTION DES FILTRES (DROPDOWNS) -->
+        <div class="sort-container flex flex-row gap-x-10 my-5">
 
-        <!-- Dropdown Ingrédients -->
-        <div class="dropdown-container relative w-64">
-          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
-            <span>Ingrédients</span>
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
-          </button>
-          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
-            <div class="relative mb-2">
-              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <img src="assets/icons/Group 4.svg" alt="Clear search">
-              </div>
+          <!-- Dropdown Ingrédients -->
+          <div class="dropdown-container relative w-64">
+            <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+              <span>Ingrédients</span>
+              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
             </div>
-            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
+            <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+              <div class="relative mb-2">
+                <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <img src="assets/icons/Group 4.svg" alt="Clear search">
+                </div>
+              </div>
+              <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
+            </div>
+          </div>
+
+          <!-- Dropdown Appareils -->
+          <div class="dropdown-container relative w-64">
+            <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+              <span>Appareils</span>
+              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
+            </div>
+            <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+              <div class="relative mb-2">
+                <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <img src="assets/icons/Group 4.svg" alt="Clear search">
+                </div>
+              </div>
+              <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
+            </div>
+          </div>
+
+          <!-- Dropdown Ustensiles -->
+          <div class="dropdown-container relative w-64">
+            <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+              <span>Ustensiles</span>
+              <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
+            </div>
+            <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+              <div class="relative mb-2">
+                <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <img src="assets/icons/Group 4.svg" alt="Clear search">
+                </div>
+              </div>
+              <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
+            </div>
           </div>
         </div>
-
-        <!-- Dropdown Appareils -->
-        <div class="dropdown-container relative w-64">
-          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
-            <span>Appareils</span>
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
-          </button>
-          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
-            <div class="relative mb-2">
-              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <img src="assets/icons/Group 4.svg" alt="Clear search">
-              </div>
-            </div>
-            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
-          </div>
-        </div>
-
-        <!-- Dropdown Ustensiles -->
-        <div class="dropdown-container relative w-64">
-          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
-            <span>Ustensiles</span>
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
-          </button>
-          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
-            <div class="relative mb-2">
-              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
-              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <img src="assets/icons/Group 4.svg" alt="Clear search">
-              </div>
-            </div>
-            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
-          </div>
-        </div>
+        <!-- FIN DE LA SECTION DES FILTRES -->
+      <!-- </div> -->
+        <p id="recipe-count" class="text-xl font-bold">1500 recettes</p>
       </div>
-      <!-- FIN DE LA SECTION DES FILTRES -->
-
-      <p id="recipe-count" class="text-xl font-bold">1500 recettes</p> <!-- ID ajouté pour la mise à jour dynamique -->
+      <!-- <div id="tags-container" class="flex flex-row flex-wrap gap-4 mb-5"> -->
+        <!-- Les tags externes apparaîtront ici -->
+      <!-- </div> -->
     </div>
     <div class="cards flex flex-wrap gap-10 justify-center">
         <!-- Les cartes de recettes seront injectées ici par le JavaScript -->

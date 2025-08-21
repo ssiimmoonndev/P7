@@ -1,7 +1,12 @@
-// VARIABLES GLOBALES ET ÉTAT
-const originalRecipes = [...recipes];
+// On crée une copie de la liste originale des recettes pour ne jamais la modifier.
+const originalRecipes = [...recipes]; 
+// On récupère l'élément de la barre de recherche du DOM.
 const searchBar = document.getElementById('search-bar');
 
+// const recipeCountElement = document.getElementById('recipe-count');
+
+// Structure de données pour stocker les filtres actifs (tags sélectionnés).
+// On utilise des Set pour éviter les doublons et pour une suppression/ajout efficace.
 let activeFilters = {
   ingredients: new Set(),
   appliances: new Set(),
@@ -12,40 +17,84 @@ let activeFilters = {
 // FONCTIONS
 
 function displayRecipe(recipesToDisplay) {
+  // Sélectionne le conteneur des cartes de recettes.
   const cardsContainer = document.querySelector('.cards');
+  // Vide le conteneur avant d'ajouter les nouvelles cartes.
   cardsContainer.innerHTML = '';
+  // Pour chaque recette à afficher, on crée et on ajoute sa carte au DOM.
   recipesToDisplay.forEach(recipe => {
-    const recipeCard = cardTemplate(recipe);
-    const cardElement = recipeCard.getUserCardDOM();
-    cardsContainer.appendChild(cardElement);
+    const recipeCard = cardTemplate(recipe); // Crée le modèle de carte.
+    const cardElement = recipeCard.getUserCardDOM(); // Génère l'élément DOM de la carte.
+    cardsContainer.appendChild(cardElement); // Ajoute la carte au conteneur.
   });
 }
 
+// function displayTags() {
+//   const tagsContainer = document.getElementById('tags-container');
+//   tagsContainer.innerHTML = '';
+
+//   for (const [type, filterSet] of Object.entries(activeFilters)) {
+//     filterSet.forEach(value => {
+//       const tag = document.createElement('div');
+//       tag.className = 'bg-primary px-4 py-2 rounded-lg flex items-center gap-4 cursor-pointer';
+      
+//       const tagName = document.createElement('span');
+//       tagName.textContent = value.charAt(0).toUpperCase() + value.slice(1);
+      
+//       const closeBtn = document.createElement('span'); // Utiliser un span pour le style
+//       closeBtn.className = 'font-bold text-lg';
+//       closeBtn.innerHTML = '&times;';
+      
+//       tag.appendChild(tagName);
+//       tag.appendChild(closeBtn);
+
+//       // Le clic sur le tag entier (y compris la croix) supprime le filtre.
+//       tag.onclick = () => removeFilter(type, value);
+
+//       tagsContainer.appendChild(tag);
+//     });
+//   }
+// }
+
+// // NOUVELLE FONCTION : Met à jour le texte du compteur de recettes.
+// function updateRecipeCount(count) {
+//   // Gère le singulier et le pluriel pour un affichage propre.
+//   recipeCountElement.textContent = count > 1 ? `${count} recettes` : `${count} recette`;
+// }
+
+
 function addFilter(type, value) {
-  activeFilters[type].add(value.toLowerCase());
-  applyAllFilters();
+  activeFilters[type].add(value.toLowerCase()); // Ajoute la valeur (en minuscules) au Set correspondant.
+  applyAllFilters(); // Relance l'application de tous les filtres.
 }
+
 
 function removeFilter(type, value) {
-  activeFilters[type].delete(value.toLowerCase());
-  applyAllFilters();
+  activeFilters[type].delete(value.toLowerCase()); // Supprime la valeur du Set correspondant.
+  applyAllFilters(); // Relance l'application de tous les filtres.
 }
 
+
 function applyAllFilters() {
+  // Récupère la valeur actuelle de la barre de recherche.
   const searchTerm = searchBar.value;
+  // Commence avec une copie complète de toutes les recettes originales.
   let filteredRecipes = [...originalRecipes];
   
-  // Filtrage par barre de recherche
+  // 1. Filtrage par la barre de recherche principale.
   filteredRecipes = searchRecipes(searchTerm, filteredRecipes);
 
-  // Filtrage par les filtres actifs (tags internes)
+  // 2. Filtrage par les tags d'ingrédients actifs.
   if (activeFilters.ingredients.size > 0) {
     filteredRecipes = filteredRecipes.filter(recipe => 
+      // .every() : la recette doit contenir TOUS les ingrédients sélectionnés.
       Array.from(activeFilters.ingredients).every(selectedIng =>
+        // .some() : on cherche si au moins un ingrédient de la recette correspond à l'ingrédient sélectionné.
         recipe.ingredients.some(ing => ing.ingredient.toLowerCase() === selectedIng)
       )
     );
   }
+  // 3. Filtrage par les tags d'appareils actifs.
   if (activeFilters.appliances.size > 0) {
     filteredRecipes = filteredRecipes.filter(recipe =>
       Array.from(activeFilters.appliances).every(selectedApp =>
@@ -53,6 +102,7 @@ function applyAllFilters() {
       )
     );
   }
+  // 4. Filtrage par les tags d'ustensiles actifs.
   if (activeFilters.ustensils.size > 0) {
     filteredRecipes = filteredRecipes.filter(recipe =>
       Array.from(activeFilters.ustensils).every(selectedUst =>
@@ -61,26 +111,30 @@ function applyAllFilters() {
     );
   }
 
-  // MISE À JOUR DE L'INTERFACE
-  displayRecipe(filteredRecipes);
-  populateDropdowns(filteredRecipes, activeFilters); // Met à jour les listes internes
+  // MISE À JOUR DE L'INTERFACE UTILISATEUR
+  displayRecipe(filteredRecipes); // Affiche les recettes finalement filtrées.
+  populateDropdowns(filteredRecipes, activeFilters); // Met à jour le contenu des listes déroulantes.
 }
 
 
-// ÉCOUTEURS D'ÉVÉNEMENTS
+// EVENT LISTENERS
 
+// Déclenche le filtrage à chaque saisie dans la barre de recherche.
 searchBar.addEventListener('input', applyAllFilters);
 
+// Gère les clics sur les listes des filtres (ingrédients, appareils, ustensiles).
 document.querySelectorAll('.dropdown-list').forEach(list => {
   list.addEventListener('click', (e) => {
+    // Utilise la délégation d'événement pour cibler l'élément `li` cliqué.
     const li = e.target.closest('li');
-    if (!li) return;
+    if (!li) return; // Si le clic n'est pas sur un `li`, on ne fait rien.
 
+    // Récupère la valeur et le type du filtre depuis les attributs data-* de l'élément.
     const value = li.dataset.value;
     const type = li.dataset.type;
-    if (!type || !value) return;
+    if (!type || !value) return; // Sécurité si les attributs manquent.
 
-    // Logique de TOGGLE
+    // Logique de TOGGLE : si le filtre est déjà actif, on le retire, sinon on l'ajoute.
     if (activeFilters[type].has(value)) {
       removeFilter(type, value);
     } else {
@@ -89,9 +143,15 @@ document.querySelectorAll('.dropdown-list').forEach(list => {
   });
 });
 
+
 function init() {
+  // Affiche toutes les recettes au chargement.
   displayRecipe(originalRecipes);
+  // Remplit les listes déroulantes avec toutes les options possibles au début.
   populateDropdowns(originalRecipes, activeFilters);
+
+  // displayTags(); // NOUVEAU : On affiche le conteneur de tags (vide au début).
+  // updateRecipeCount(originalRecipes.length); // NOUVEAU : On initialise le compteur avec le total.
 }
 
 init();
