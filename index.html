@@ -1,9 +1,22 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuration de Tailwind pour utiliser couleurs personnalisées
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': 'rgb(241, 211, 111)', 
+            'background': 'rgb(229, 229, 229)',
+          }
+        }
+      }
+    }
+  </script>
   <title>Les Petits Plats</title>
 </head>
 
@@ -12,72 +25,94 @@
     <img class="absolute top-10 left-10" src="./assets/icons/Logo.png" alt="Logo Les Petits Plats">
     <div class="bg-[url('./assets/icons/Mask_group.png')] bg-cover bg-center h-screen flex items-center justify-center w-full">
       <div class="text-center text-white w-[100%]">
-        <p class="text-[color:var(--primary-color)] text-3xl font-bold mb-8 leading-[1.5]">
+        <p class="text-primary text-3xl font-bold mb-8 leading-[1.5]">
           CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>
           DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
         </p>
         <div class="relative flex items-center justify-center w-[70%] mr-auto ml-auto">
-          <input class="w-full bg-white text-black rounded border-2 border-solid pl-4 pt-3 pb-3"
-          type="text"
-          placeholder="Rechercher une recette, un ingrédient, ..."
-          name="search-bar"
-          id="search-bar">
-          <div class="absolute right-3 w-6 h-6 items-center justify-center">
+          <input class="w-full bg-white text-black rounded-lg border-2 border-solid pl-4 pr-12 py-3"
+            type="text"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+            name="search-bar"
+            id="search-bar">
+          <div class="absolute right-4 w-6 h-6 items-center justify-center">
             <img src="./assets/icons/Loupe.svg" alt="Icone de recherche">
           </div>
         </div>
       </div>
     </div>
   </header>
-  <main class="bg-[color:var(--bg-color)]">
+
+  <main class="bg-background px-10 py-5">
     <div class="flex flex-row items-center justify-between">
-      <div class="sort-container flex flex-row ml-5 mt-10 mb-10 gap-x-10">
-        <div class="dropdown-container">
-          <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Ingrédients
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
+      
+      <!-- SECTION DES FILTRES (DROPDOWNS) -->
+      <div class="sort-container flex flex-row gap-x-10 my-5">
+
+        <!-- Dropdown Ingrédients -->
+        <div class="dropdown-container relative w-64">
+          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+            <span>Ingrédients</span>
+            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
           </button>
-          <div class="dropdown-content hidden rounded">
-            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
-            <div class="flex absolute right-3 top-3">
-              <img src="assets/icons/Group 4.svg" alt="">
+          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+            <div class="relative mb-2">
+              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <img src="assets/icons/Group 4.svg" alt="Clear search">
+              </div>
             </div>
-            <ul class="dropdown-list flex flex-col gap-1"></ul>
+            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
           </div>
         </div>
-        <div class="dropdown-container">
-          <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Appareils
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
+
+        <!-- Dropdown Appareils -->
+        <div class="dropdown-container relative w-64">
+          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+            <span>Appareils</span>
+            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
           </button>
-          <div class="dropdown-content hidden rounded">
-            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
-            <div class="flex absolute right-3 top-3">
-              <img src="assets/icons/Group 4.svg" alt="">
+          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+            <div class="relative mb-2">
+              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <img src="assets/icons/Group 4.svg" alt="Clear search">
+              </div>
             </div>
-            <ul class="dropdown-list  flex flex-col gap-1"></ul>
+            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
           </div>
         </div>
-        <div class="dropdown-container">
-          <button class="dropdown-btn bg-white rounded-xl p-5 flex gap-2">Ustensiles
-            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" height="15px" width="15px">
+
+        <!-- Dropdown Ustensiles -->
+        <div class="dropdown-container relative w-64">
+          <button class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
+            <span>Ustensiles</span>
+            <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
           </button>
-          <div class="dropdown-content hidden rounded">
-            <input type="text" class="dropdown-search border-2 border-solid border-light-grey rounded" placeholder="Rechercher...">
-            <div class="flex absolute right-3 top-3">
-              <img src="assets/icons/Group 4.svg" alt="">
+          <div class="dropdown-content hidden absolute z-10 w-full bg-white rounded-b-lg shadow-lg border border-gray-200 border-t-0 -mt-2 p-3">
+            <div class="relative mb-2">
+              <input type="text" class="dropdown-search w-full border border-solid border-gray-300 rounded p-2 pr-8" placeholder="Rechercher...">
+              <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <img src="assets/icons/Group 4.svg" alt="Clear search">
+              </div>
             </div>
-            <ul class="dropdown-list  flex flex-col gap-1"></ul>
+            <ul class="dropdown-list flex flex-col gap-1 max-h-60 overflow-y-auto"></ul>
           </div>
         </div>
       </div>
-      <p class="text-xl font-bold mr-10">1500 recettes</p>
-    </div>
-    <div class="cards flex flex-wrap gap-10 justify-center"></div>
-  </main>
-</body>
+      <!-- FIN DE LA SECTION DES FILTRES -->
 
-<script src="data/recipes.js"></script>
-<script src="templates/cards.js"></script>
-<script src="algorithm/search.js"></script>
-<script src="utils/filters.js"></script>
-<script src="index.js"></script>
+      <p id="recipe-count" class="text-xl font-bold">1500 recettes</p> <!-- ID ajouté pour la mise à jour dynamique -->
+    </div>
+    <div class="cards flex flex-wrap gap-10 justify-center">
+        <!-- Les cartes de recettes seront injectées ici par le JavaScript -->
+    </div>
+  </main>
+
+  <script src="data/recipes.js"></script>
+  <script src="templates/cards.js"></script>
+  <script src="algorithm/search.js"></script>
+  <script src="utils/filters.js"></script>
+  <script src="index.js"></script>
+</body>
 </html>

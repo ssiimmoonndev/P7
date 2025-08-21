@@ -14,11 +14,11 @@ function createListItem(item, type, isSelected) {
   li.dataset.value = item; // On stocke la valeur en minuscules pour la comparaison
 
   if (isSelected) {
-    li.className = "p-2 bg-[color:var(--primary-color)] font-bold flex justify-between items-center cursor-pointer";
+    li.className = "p-2 bg-primary font-bold flex justify-between items-center cursor-pointer";
     // Si l'élément est sélectionné, on ajoute le texte et une icône de croix
     li.innerHTML = `<span>${content}</span><span class="text-black text-xl">&times;</span>`;
   } else {
-    li.className = "p-2 hover:bg-[color:var(--primary-color)] cursor-pointer";
+    li.className = "p-2 hover:bg-primary cursor-pointer";
     li.textContent = content;
   }
   return li;
@@ -85,8 +85,7 @@ function initializeDropdowns() {
     const list = container.querySelector('.dropdown-list');
     const chevron = button.querySelector('img');
 
-    chevron.addEventListener('click', (e) => {
-      e.stopPropagation();
+    button.addEventListener('click', (e) => {
       content.classList.toggle('hidden');
       button.classList.toggle('open');
     });

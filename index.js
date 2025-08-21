@@ -1,6 +1,4 @@
-// Fichier: index.js (Version finale et épurée)
-
-// --- VARIABLES GLOBALES ET ÉTAT ---
+// VARIABLES GLOBALES ET ÉTAT
 const originalRecipes = [...recipes];
 const searchBar = document.getElementById('search-bar');
 
@@ -11,7 +9,7 @@ let activeFilters = {
 };
 
 
-// --- FONCTIONS ---
+// FONCTIONS
 
 function displayRecipe(recipesToDisplay) {
   const cardsContainer = document.querySelector('.cards');
@@ -69,7 +67,7 @@ function applyAllFilters() {
 }
 
 
-// --- ÉCOUTEURS D'ÉVÉNEMENTS ---
+// ÉCOUTEURS D'ÉVÉNEMENTS
 
 searchBar.addEventListener('input', applyAllFilters);
 
@@ -90,9 +88,6 @@ document.querySelectorAll('.dropdown-list').forEach(list => {
     }
   });
 });
-
-
-// --- INITIALISATION ---
 
 function init() {
   displayRecipe(originalRecipes);

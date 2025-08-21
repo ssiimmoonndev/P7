@@ -1,8 +1,6 @@
 
 function cardTemplate(data) {
-  console.log(data);
   
-
   const {id, image, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
   const picture = `./assets/images/${image}`;
@@ -20,7 +18,7 @@ function cardTemplate(data) {
     img.setAttribute("alt", name);
 
     const timeSpan = document.createElement("span");
-    timeSpan.className = "absolute bg-[color:var(--primary-color)] top-4 right-4 text-black font-bold rounded-xl px-2 py-1 text-sm";
+    timeSpan.className = "absolute bg-primary top-4 right-4 text-black font-bold rounded-xl px-2 py-1 text-sm";
     timeSpan.textContent = `${time}min`;
 
     const contentContainer = document.createElement("div");
