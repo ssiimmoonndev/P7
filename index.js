@@ -3,7 +3,7 @@ const originalRecipes = [...recipes];
 // On récupère l'élément de la barre de recherche du DOM.
 const searchBar = document.getElementById('search-bar');
 
-// const recipeCountElement = document.getElementById('recipe-count');
+const recipeCountElement = document.getElementById('recipe-count');
 
 // Structure de données pour stocker les filtres actifs (tags sélectionnés).
 // On utilise des Set pour éviter les doublons et pour une suppression/ajout efficace.
@@ -29,38 +29,38 @@ function displayRecipe(recipesToDisplay) {
   });
 }
 
-// function displayTags() {
-//   const tagsContainer = document.getElementById('tags-container');
-//   tagsContainer.innerHTML = '';
+function displayTags() {
+  const tagsContainer = document.getElementById('tags-container');
+  tagsContainer.innerHTML = '';
 
-//   for (const [type, filterSet] of Object.entries(activeFilters)) {
-//     filterSet.forEach(value => {
-//       const tag = document.createElement('div');
-//       tag.className = 'bg-primary px-4 py-2 rounded-lg flex items-center gap-4 cursor-pointer';
+  for (const [type, filterSet] of Object.entries(activeFilters)) {
+    filterSet.forEach(value => {
+      const tag = document.createElement('div');
+      tag.className = 'bg-primary px-4 py-2 rounded-lg flex items-center gap-4 cursor-pointer';
       
-//       const tagName = document.createElement('span');
-//       tagName.textContent = value.charAt(0).toUpperCase() + value.slice(1);
+      const tagName = document.createElement('span');
+      tagName.textContent = value.charAt(0).toUpperCase() + value.slice(1);
       
-//       const closeBtn = document.createElement('span'); // Utiliser un span pour le style
-//       closeBtn.className = 'font-bold text-lg';
-//       closeBtn.innerHTML = '&times;';
+      const closeBtn = document.createElement('span'); // Utiliser un span pour le style
+      closeBtn.className = 'font-bold text-lg';
+      closeBtn.innerHTML = '&times;';
       
-//       tag.appendChild(tagName);
-//       tag.appendChild(closeBtn);
+      tag.appendChild(tagName);
+      tag.appendChild(closeBtn);
 
-//       // Le clic sur le tag entier (y compris la croix) supprime le filtre.
-//       tag.onclick = () => removeFilter(type, value);
+      // Le clic sur le tag entier (y compris la croix) supprime le filtre.
+      tag.onclick = () => removeFilter(type, value);
 
-//       tagsContainer.appendChild(tag);
-//     });
-//   }
-// }
+      tagsContainer.appendChild(tag);
+    });
+  }
+}
 
-// // NOUVELLE FONCTION : Met à jour le texte du compteur de recettes.
-// function updateRecipeCount(count) {
-//   // Gère le singulier et le pluriel pour un affichage propre.
-//   recipeCountElement.textContent = count > 1 ? `${count} recettes` : `${count} recette`;
-// }
+// NOUVELLE FONCTION : Met à jour le texte du compteur de recettes.
+function updateRecipeCount(count) {
+  // Gère le singulier et le pluriel pour un affichage propre.
+  recipeCountElement.textContent = count > 1 ? `${count} recettes` : `${count} recette`;
+}
 
 
 function addFilter(type, value) {
@@ -114,6 +114,8 @@ function applyAllFilters() {
   // MISE À JOUR DE L'INTERFACE UTILISATEUR
   displayRecipe(filteredRecipes); // Affiche les recettes finalement filtrées.
   populateDropdowns(filteredRecipes, activeFilters); // Met à jour le contenu des listes déroulantes.
+  displayTags();
+  updateRecipeCount(filteredRecipes.length);
 }
 
 
@@ -150,8 +152,8 @@ function init() {
   // Remplit les listes déroulantes avec toutes les options possibles au début.
   populateDropdowns(originalRecipes, activeFilters);
 
-  // displayTags(); // NOUVEAU : On affiche le conteneur de tags (vide au début).
-  // updateRecipeCount(originalRecipes.length); // NOUVEAU : On initialise le compteur avec le total.
+  displayTags(); // NOUVEAU : On affiche le conteneur de tags (vide au début).
+  updateRecipeCount(originalRecipes.length); // NOUVEAU : On initialise le compteur avec le total.
 }
 
 init();
