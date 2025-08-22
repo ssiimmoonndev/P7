@@ -10,7 +10,7 @@ function cardTemplate(data) {
   function getUserCardDOM() {
     // Crée l'élément principal de la carte.
     const article = document.createElement("article");
-    article.className = "relative bg-white w-[30%] shadow-2xl rounded-lg overflow-hidden";
+    article.className = "relative bg-white w-full md:w-[48%] lg:w-[30%] shadow-2xl rounded-lg overflow-hidden";
 
     // Crée le conteneur pour l'image et le badge de temps.
     const imageContainer = document.createElement("div");

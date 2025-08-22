@@ -25,17 +25,17 @@
     <img class="absolute top-10 left-10" src="./assets/icons/Logo.png" alt="Logo Les Petits Plats">
     <div class="bg-[url('./assets/icons/Mask_group.png')] bg-cover bg-center h-screen flex items-center justify-center w-full">
       <div class="text-center text-white w-[100%]">
-        <p class="text-primary text-3xl font-bold mb-8 leading-[1.5]">
+        <p class="text-primary text-2xl md:text-3xl font-bold mb-8 leading-[1.5]">
           CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>
           DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
         </p>
-        <div class="relative flex items-center justify-center w-[70%] mr-auto ml-auto">
+        <div class="relative w-[90%] md:w-[70%] mx-auto">
           <input class="w-full bg-white text-black rounded-lg border-2 border-solid pl-4 pr-12 py-3"
             type="text"
             placeholder="Rechercher une recette, un ingrédient, ..."
             name="search-bar"
             id="search-bar">
-          <div class="absolute right-4 w-6 h-6 items-center justify-center">
+          <div class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6">
             <img src="./assets/icons/Loupe.svg" alt="Icone de recherche">
           </div>
         </div>
@@ -43,15 +43,15 @@
     </div>
   </header>
 
-  <main class="bg-background px-10 py-5">
+  <main class="bg-background px-4 md:px-10 py-5">
     <div class="flex flex-col">
-      <div class="flex flex-row items-start justify-between">
+      <div class="flex flex-col md:flex-row md:items-start justify-between">
         
         <!-- SECTION DES FILTRES (DROPDOWNS) -->
-        <div class="sort-container flex flex-row gap-x-10 my-5">
+        <div class="sort-container flex flex-col md:flex-row gap-y-4 md:gap-x-10 my-5 w-full md:w-auto">
 
           <!-- Dropdown Ingrédients -->
-          <div class="dropdown-container relative w-64">
+          <div class="dropdown-container relative w-full md:w-64">
             <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
               <span>Ingrédients</span>
               <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
@@ -68,7 +68,7 @@
           </div>
 
           <!-- Dropdown Appareils -->
-          <div class="dropdown-container relative w-64">
+          <div class="dropdown-container relative w-full md:w-64">
             <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
               <span>Appareils</span>
               <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
@@ -85,7 +85,7 @@
           </div>
 
           <!-- Dropdown Ustensiles -->
-          <div class="dropdown-container relative w-64">
+          <div class="dropdown-container relative w-full md:w-64">
             <div class="dropdown-btn group bg-white rounded-xl p-5 flex justify-between items-center w-full">
               <span>Ustensiles</span>
               <img src="assets/icons/down-arrow-svgrepo-com.svg" alt="arrow-down" class="dropdown-chevron cursor-pointer h-[15px] w-[15px] transition-transform duration-300 group-[.open]:rotate-180">
@@ -103,13 +103,13 @@
         </div>
         <!-- FIN DE LA SECTION DES FILTRES -->
       <!-- </div> -->
-        <p id="recipe-count" class="text-xl font-bold">1500 recettes</p>
+        <p id="recipe-count" class="text-xl font-bold my-5 flex-shrink-0">1500 recettes</p>
       </div>
       <div id="tags-container" class="flex flex-row flex-wrap gap-4 mb-5">
         Les tags externes apparaîtront ici
       </div>
     </div>
-    <div class="cards flex flex-wrap gap-10 justify-center">
+    <div class="cards flex flex-wrap gap-x-10 gap-y-10 justify-center">
         <!-- Les cartes de recettes seront injectées ici par le JavaScript -->
     </div>
   </main>
