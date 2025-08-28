@@ -2,6 +2,7 @@
 function contient(texte, mot) {
   // Convertit le texte et le mot en minuscules pour une recherche insensible à la casse.
   const texteEnMinuscules = texte.toLowerCase();
+  // Convertit le mot recherché en minuscules.
   const motEnMinuscules = mot.toLowerCase();
   // Retourne vrai si le texte inclut le mot.
   return texteEnMinuscules.includes(motEnMinuscules);
@@ -29,9 +30,6 @@ function searchRecipes(mot, recipes) {
       // Pour chaque ingrédient, on vérifie s'il contient le mot.
       return contient(item.ingredient, mot);
     });
-
-    if (nomCorrespond || descriptionCorrespond || ingredientCorrespond) {
-    }
    
     
     // La recette est conservée si le mot est trouvé dans le nom OU la description OU au moins un ingrédient.

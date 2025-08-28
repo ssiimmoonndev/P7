@@ -1,7 +1,8 @@
 
 function createListItem(item, type, isSelected) {
+  // Crée un nouvel élément de liste <li>.
   const li = document.createElement('li');
-  // Met la première lettre en majuscule pour un affichage propre.
+  // Met la première lettre en majuscule.
   const content = item.charAt(0).toUpperCase() + item.slice(1);
   // Stocke le type de filtre dans un attribut data-* pour une récupération facile au clic.
   li.dataset.type = type; 
@@ -24,6 +25,7 @@ function renderList(listElement, allItems, selectedItems, type) {
   listElement.innerHTML = ''; // On vide la liste pour la reconstruire.
 
   // Sépare les items non sélectionnés des items déjà sélectionnés.
+  // La méthode .has() vérifie si un élément existe et retourne true ou false.
   const unselected = Array.from(allItems).filter(item => !selectedItems.has(item));
   const selected = Array.from(selectedItems);
   

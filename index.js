@@ -6,7 +6,7 @@ const searchBar = document.getElementById('search-bar');
 const recipeCountElement = document.getElementById('recipe-count');
 
 // Structure de données pour stocker les filtres actifs (tags sélectionnés).
-// On utilise des Set pour éviter les doublons et pour une suppression/ajout efficace.
+// On utilise des Set pour éviter les doublons et pour une suppression/ajout efficace car un Set est un type d'objet qui ne peut stocker que des valeurs uniques.
 let activeFilters = {
   ingredients: new Set(),
   appliances: new Set(),
@@ -30,25 +30,37 @@ function displayRecipe(recipesToDisplay) {
 }
 
 function displayTags() {
+  // On récupère le conteneur HTML qui affiche les tags des filtres actifs.
   const tagsContainer = document.getElementById('tags-container');
+  // On le vide.
   tagsContainer.innerHTML = '';
 
-  for (const [type, filterSet] of Object.entries(activeFilters)) {
+  const filterTypes = Object.keys(activeFilters); // Récupère toutes les clés (types de filtres)
+  
+  for (const type of filterTypes) {
+    const filterSet = activeFilters[type]; // Les valeurs pour ce type (ex: ['red', 'blue'])
+    
     filterSet.forEach(value => {
+      // On crée un nouvel élément <div> qui représentera le tag.
       const tag = document.createElement('div');
+      // Classes Tailwind pour lui donner du style.
       tag.className = 'bg-primary px-4 py-2 rounded-lg flex items-center gap-4 cursor-pointer';
       
+      // Span pour le nom du tag.
       const tagName = document.createElement('span');
+      // On met la première lettre en majuscule.
       tagName.textContent = value.charAt(0).toUpperCase() + value.slice(1);
       
-      const closeBtn = document.createElement('span'); // Utiliser un span pour le style
+      // Span pour la croix de fermeture.
+      const closeBtn = document.createElement('span');
       closeBtn.className = 'font-bold text-lg';
+      // Représente le symbole de multiplication.
       closeBtn.innerHTML = '&times;';
       
       tag.appendChild(tagName);
       tag.appendChild(closeBtn);
 
-      // Le clic sur le tag entier (y compris la croix) supprime le filtre.
+      // Au click, on appelle la fonction 'removeFilter' avec le bon type et la bonne value pour à supprimer.
       tag.onclick = () => removeFilter(type, value);
 
       tagsContainer.appendChild(tag);
@@ -56,9 +68,9 @@ function displayTags() {
   }
 }
 
-// NOUVELLE FONCTION : Met à jour le texte du compteur de recettes.
+// Met à jour le texte du compteur de recettes.
 function updateRecipeCount(count) {
-  // Gère le singulier et le pluriel pour un affichage propre.
+  // Si count > 1, on affiche "recettes". Sinon, on affiche "recette".
   recipeCountElement.textContent = count > 1 ? `${count} recettes` : `${count} recette`;
 }
 
@@ -85,8 +97,9 @@ function applyAllFilters() {
   filteredRecipes = searchRecipes(searchTerm, filteredRecipes);
 
   // 2. Filtrage par les tags d'ingrédients actifs.
-  if (activeFilters.ingredients.size > 0) {
+  if (activeFilters.ingredients.size > 0) { // On filtre seulement si il y a au moins un filtre d'ingrédient actif.
     filteredRecipes = filteredRecipes.filter(recipe => 
+      // Convertit le Set en Array.
       // .every() : la recette doit contenir TOUS les ingrédients sélectionnés.
       Array.from(activeFilters.ingredients).every(selectedIng =>
         // .some() : on cherche si au moins un ingrédient de la recette correspond à l'ingrédient sélectionné.
@@ -114,8 +127,8 @@ function applyAllFilters() {
   // MISE À JOUR DE L'INTERFACE UTILISATEUR
   displayRecipe(filteredRecipes); // Affiche les recettes finalement filtrées.
   populateDropdowns(filteredRecipes, activeFilters); // Met à jour le contenu des listes déroulantes.
-  displayTags();
-  updateRecipeCount(filteredRecipes.length);
+  displayTags(); // Affiche les tags des filtres actuellement actifs.
+  updateRecipeCount(filteredRecipes.length); // Met à jour le compteur avec le nombre de recettes trouvées.
 }
 
 
@@ -134,12 +147,14 @@ document.querySelectorAll('.dropdown-list').forEach(list => {
     // Récupère la valeur et le type du filtre depuis les attributs data-* de l'élément.
     const value = li.dataset.value;
     const type = li.dataset.type;
-    if (!type || !value) return; // Sécurité si les attributs manquent.
+    if (!type || !value) return; // Sécurité si les attributs manquent, on ne fait rien.
 
-    // Logique de TOGGLE : si le filtre est déjà actif, on le retire, sinon on l'ajoute.
+    // Logique de TOGGLE : si le filtre est déjà actif,
     if (activeFilters[type].has(value)) {
+      // On le retire,
       removeFilter(type, value);
     } else {
+      // Sinon, on l'ajoute.
       addFilter(type, value);
     }
   });
