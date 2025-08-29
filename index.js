@@ -150,6 +150,7 @@ document.querySelectorAll('.dropdown-list').forEach(list => {
     if (!type || !value) return; // Sécurité si les attributs manquent, on ne fait rien.
 
     // Logique de TOGGLE : si le filtre est déjà actif,
+    // La méthode .has() vérifie si un élément existe et retourne true ou false.
     if (activeFilters[type].has(value)) {
       // On le retire,
       removeFilter(type, value);
